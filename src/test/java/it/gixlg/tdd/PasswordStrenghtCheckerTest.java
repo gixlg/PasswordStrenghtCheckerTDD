@@ -8,7 +8,7 @@ public class PasswordStrenghtCheckerTest {
     public void passwordTooShort() {
         assertEquals(false, new Password("").isValid());
         assertEquals(false, new Password("aaa").isValid());
-        assertEquals(false, new Password("aaaaaa").isValid());
+        assertEquals(false, new Password(" ").isValid());
     }
 
     @Test

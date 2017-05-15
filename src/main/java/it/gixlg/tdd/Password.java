@@ -10,6 +10,7 @@ public class Password {
 
     public boolean isValid(){
         return this.password.length() > 7
-            && this.password.matches(".*[a-z].*");
+            && this.password.matches(".*[a-z].*")
+            && this.password.matches(".*[0-9].*");
     }
 }
