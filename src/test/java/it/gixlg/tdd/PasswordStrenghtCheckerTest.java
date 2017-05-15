@@ -20,4 +20,9 @@ public class PasswordStrenghtCheckerTest {
     public void passwordContainsNoAlpha() {
         assertEquals(false, new Password("12345678").isValid());
     }
+
+    @Test
+    public void passwordContainsNoDigit() {
+        assertEquals(false, new Password("abcdefgh").isValid());
+    }
 }
