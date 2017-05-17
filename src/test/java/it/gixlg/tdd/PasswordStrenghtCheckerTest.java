@@ -2,17 +2,16 @@ package it.gixlg.tdd;
 
 import static org.junit.Assert.assertEquals;
 
-import it.gixlg.tdd.constraint.AlphaConstraint;
-import it.gixlg.tdd.constraint.DigitConstraint;
-import it.gixlg.tdd.constraint.LenghtConstraint;
+import it.gixlg.tdd.constraint.*;
 import org.junit.Test;
 
 public class PasswordStrenghtCheckerTest {
     @Test
     public void passwordTooShort() {
-        assertEquals(false, new Password("", new LenghtConstraint()).isValid());
-        assertEquals(false, new Password("aaa", new LenghtConstraint()).isValid());
-        assertEquals(false, new Password("aaaaaa", new LenghtConstraint()).isValid());
+        PasswordConstraint constraint = new LenghtConstraint();
+        assertEquals(false, new Password("", constraint).isValid());
+        assertEquals(false, new Password("aaa", constraint).isValid());
+        assertEquals(false, new Password("aaaaaa", constraint).isValid());
     }
 
 //    @Test
@@ -22,11 +21,13 @@ public class PasswordStrenghtCheckerTest {
 
     @Test
     public void passwordContainsNoAlpha() {
-        assertEquals(false, new Password("13245678", new DigitConstraint()).isValid());
+        PasswordConstraint constraint = new DigitConstraint();
+        assertEquals(false, new Password("13245678", constraint).isValid());
     }
 
     @Test
     public void passwordContainsNoDigit() {
-        assertEquals(false, new Password("abcdefgh", new AlphaConstraint()).isValid());
+        PasswordConstraint constraint =  new AlphaConstraint();
+        assertEquals(false, new Password("abcdefgh",constraint).isValid());
     }
 }

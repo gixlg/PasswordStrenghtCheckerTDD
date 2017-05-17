@@ -1,9 +1,19 @@
 package it.gixlg.tdd.constraint;
 
-public class AlphaConstraint implements PasswordConstraint{
+public class AlphaConstraint extends NoConstraint{
+
+    private PasswordConstraint passwordConstraint;
+
+    public AlphaConstraint(){
+        this.passwordConstraint = new NoConstraint();
+    }
+
+    public AlphaConstraint(PasswordConstraint passwordConstraint){
+        this.passwordConstraint = passwordConstraint;
+    }
 
     public boolean isValid(String passwordText) {
-        return passwordText.matches(".*[0-9].*");
+        return this.passwordConstraint.isValid(passwordText) && passwordText.matches(".*[0-9].*");
     }
 
 }
