@@ -30,4 +30,10 @@ public class PasswordStrenghtCheckerTest {
         PasswordConstraint constraint =  new AlphaConstraint();
         assertEquals(false, new Password("abcdefgh",constraint).isValid());
     }
+
+    @Test
+    public void passwordWithDigitLowecaseAndUppercaseContains() {
+        PasswordConstraint constraint = new DigitConstraint(new LowercaseConstraint(new UppercaseConstraint()));
+        assertEquals(false, new Password("abcdefgh",constraint).isValid());
+    }
 }
